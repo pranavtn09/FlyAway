@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>FlyAway</title>
 </head>
 <body>
 <%int n=Integer.parseInt(request.getParameter("ntick")); 

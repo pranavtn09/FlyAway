@@ -42,6 +42,6 @@ Enter CVV<input type="number"/>
 <tr><td>Total Amound</td><td><%=fl.getPrize() %></td></tr>
 </table>
 </div>
-
+<%session.invalidate(); %>
 </body>
 </html>

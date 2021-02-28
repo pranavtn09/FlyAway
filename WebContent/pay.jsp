@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>FlyAwaye</title>
 <style type="text/css">
 	body {
 	background-image: url("welcome.jpg");background-repeat: no-repeat ;background-size: cover;
