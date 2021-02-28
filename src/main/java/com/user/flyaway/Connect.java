@@ -6,6 +6,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,22 +86,22 @@ public class Connect extends Flightinfo{
 		//flist=null;
 		try {
 			Statement stmt=con.createStatement();
-			String q="select * from flyaway.flights where source='"+fl.getSource()+"' and destination='"+fl.getDestination()+"'";
-			// and DEPARTURE_DATE='"+fl.getDate()+"'";
+			String q="select * from flyaway.flights where source='"+fl.getSource()+"' and destination='"+fl.getDestination()+"'and DEPARTURE_DATE='"+fl.getDates()+"'";
 			ResultSet rs=stmt.executeQuery(q);
 			//if(rs.next()) {
 			while(rs.next()) {
+				
 				Flightinfo flg=new Flightinfo();
 				flg.setFid(rs.getString(1));
 				flg.setSource(rs.getString(2));
 				flg.setDestination(rs.getString(3));
 				flg.setPrize(rs.getInt(4));
-				//flg.setDate(rs.getDate(5));
+				flg.setDate(rs.getDate(5));
 				flist.add(flg);
 			}
-		//	}else {
-			//	flist=null;
-			//}
+			/*}else {
+				//System.out.println("oombi");
+			}*/
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			flist=null;
@@ -119,8 +121,34 @@ public class Connect extends Flightinfo{
 				flg.setFid(rs.getString(1));
 				flg.setSource(rs.getString(2));
 				flg.setDestination(rs.getString(3));
+				flg.setPrize(rs.getInt(4));
 				flg.setDate(rs.getDate(5));
 				flist.add(flg);
+			}
+		con.close();
+	}catch(SQLException e) {
+		e.printStackTrace();
+	}
+		return flist;
+	}
+	public java.util.Date StringToDate(String dob) throws ParseException {
+	      SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+	      java.util.Date date = formatter.parse(dob);
+	      return date;
+	   }
+	public List<Flightinfo> distinct() {
+		List<Flightinfo> flist=new ArrayList<Flightinfo>();
+		Connection con=getConnection();
+		try {
+			Statement stmt=con.createStatement();
+			String q="select distinct source,destination from flyaway.flights";
+			ResultSet rs=stmt.executeQuery(q);
+			while(rs.next()) {
+				Flightinfo fl=new Flightinfo();
+				
+				fl.setSource(rs.getString(1));
+				fl.setDestination(rs.getString(2));
+				flist.add(fl);
 			}
 		con.close();
 	}catch(SQLException e) {

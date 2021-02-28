@@ -16,7 +16,8 @@
 </head>
 <body>
 <div align="center">
-<table>
+<form action="" method="post">
+<table border="1">
 <tr>
 <th>Flight</th>
 <th>Price</th>
@@ -33,6 +34,7 @@ for(Flightinfo fl:flist){
 </tr>
 <%} %>
 </table>
+</form>
 </div>
 </body>
 </html>

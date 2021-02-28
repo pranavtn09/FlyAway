@@ -24,20 +24,24 @@
 		a=(AdminInfo)session.getAttribute("Admin");
 		String uname=a.getUsername();	
 		%> 
-<table style="width: 100px; border: 1px;">
+<div align="center">
+<table border="1">
 <tr>
 <th>Source</th>
 <th>Destination</th>
+<th>Dates</th>
 </tr>
 <%
 		for(Flightinfo fl:flist){%>
 			<tr><td><%=fl.getSource() %></td>
-			<td><%=fl.getDestination() %></td></tr>
+			<td><%=fl.getDestination() %></td>
+			<td><%=fl.getDate() %></td></tr>
 		<%}
 }catch(NullPointerException e){
 %>
 <jsp:include page = "welcome.html" flush = "true" />
 <%}%>
 </table>
+</div>
 </body>
 </html>

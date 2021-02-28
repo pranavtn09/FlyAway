@@ -8,6 +8,13 @@ public class Flightinfo {
 	private String Destination;
 	private int prize;
 	private Date date;
+	private String dates;
+	public String getDates() {
+		return dates;
+	}
+	public void setDates(String dates) {
+		this.dates = dates;
+	}
 	public Date getDate() {
 		return date;
 	}

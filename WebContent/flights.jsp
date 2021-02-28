@@ -24,8 +24,8 @@
 			a=(AdminInfo)session.getAttribute("Admin");
 			String uname=a.getUsername();	
 		%>
-
-<table style="width: 100px; border: 1px;" >
+<div align="center">
+<table border="1" >
 <tr>
 <th>Flight_Name</th>
 </tr>
@@ -38,5 +38,6 @@
 <jsp:include page = "welcome.html" flush = "true" />
 <%}%>
 </table>
+</div>
 </body>
 </html>

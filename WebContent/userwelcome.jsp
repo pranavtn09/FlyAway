@@ -16,15 +16,12 @@
 </style>
 </head>
 <body>
-<%  Connect c=new Connect();
-	List<Flightinfo> flist=c.flight();
-	Flightinfo fll=new Flightinfo();
+<%  
+	Connect c=new Connect();
+	List<Flightinfo> flist=(List)c.distinct();
 %>
 <div align="center">
 <form action="UserBooking" method="post" >
-
-
-
 Source <select name="source" >
 <%for(Flightinfo fl:flist){%>
 <option value="<%=fl.getSource()%>"><%=fl.getSource()%> </option>
@@ -35,7 +32,7 @@ Destination  <select name="dest" >
 <option value="<%=fl.getDestination()%>"><%=fl.getDestination()%></option>
 <%}%>
 </select>
-<input type="date" name="date" placeholder="DD/MM/YYYY"/>
+<input type="date" name="date" placeholder="YYYY-MM-DD"/>
 <input type="submit" name="submit" value="Book"/>
 </form>
 </div>

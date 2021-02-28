@@ -3,6 +3,8 @@ package com.user.flyaway;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -36,29 +38,30 @@ public class UserBooking extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html");
-		PrintWriter out=response.getWriter();
+		PrintWriter out=response.getWriter(); 
 		Connect c=new Connect();
 		Flightinfo fl=new Flightinfo();
 		HttpSession session=request.getSession();
 		RequestDispatcher re=null;
-		String date=request.getParameter("date");
+		String did=request.getParameter("date");
 		fl.setSource(request.getParameter("source"));
 		fl.setDestination(request.getParameter("dest"));
 		try {
+			java.util.Date dates=c.StringToDate(did);
+			String date= new SimpleDateFormat("dd-mm-yyyy").format(dates);
 		if(date!=null) {
-		Date dates=Date.valueOf(date);
-		fl.setDate(dates);
+		fl.setDates(date);
 		}
 		List<Flightinfo>flist=c.booking(fl);
-		if(flist!=null) {
+		if(flist!=null && !flist.isEmpty()) {
 			session.setAttribute("pay", flist);
 			re=request.getRequestDispatcher("flist.jsp");
-			re.forward(request, response);
-			out.print("funda");	
+			re.forward(request, response);	
 		}
 		else {
-		
-			out.print("oombi");
+			out.print("No flights available");
+			re=request.getRequestDispatcher("userwelcome.jsp");
+			re.include(request, response);
 			
 		}
 		}catch (Exception e) {
