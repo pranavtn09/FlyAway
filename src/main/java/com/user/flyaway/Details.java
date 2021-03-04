@@ -42,13 +42,18 @@ public class Details extends HttpServlet {
 		PersonalInfo l=(PersonalInfo)session.getAttribute("ticket");
 		List<PersonalInfo> pd=(List)session.getAttribute("details");
 		int n=l.getNticket();
-		System.out.println(n);
+		int k=(int)session.getAttribute("loop");
 		PersonalInfo p=new PersonalInfo();
 		p.setPname(request.getParameter("pname"));
 		p.setPlace(request.getParameter("place"));
 		p.setAge(Integer.parseInt(request.getParameter("age")));
 		pd.add(p);
 		session.setAttribute("details",pd);
+		if(k==1) {
+			response.sendRedirect("payment.jsp");
+		}else {
+		k=k-1;
+		session.setAttribute("loop", k);
 		response.sendRedirect("BookingDetails.html");
 		int prize = 0;
 		String fname = null;
@@ -71,7 +76,7 @@ public class Details extends HttpServlet {
 		fll.setDate(Date);
 		fll.setPrize(prize);
 		session.setAttribute("booked", fll);
-		
+		}
 	}
 
 }

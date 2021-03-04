@@ -15,6 +15,7 @@ List<PersonalInfo> pl=new ArrayList<PersonalInfo>();
 PersonalInfo p=new PersonalInfo();
 p.setNticket(n);
 session.setAttribute("ticket",p);
+session.setAttribute("loop", p.getNticket());
 session.setAttribute("details", pl);
 response.sendRedirect("BookingDetails.html");%>
 </body>
