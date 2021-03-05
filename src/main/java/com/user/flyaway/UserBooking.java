@@ -45,8 +45,10 @@ public class UserBooking extends HttpServlet {
 		RequestDispatcher re=null;
 		String did=request.getParameter("date");
 		fl.setSource(request.getParameter("source"));
-		fl.setDestination(request.getParameter("dest"));
 		try {
+			int n=Integer.parseInt(request.getParameter("ntick")); 
+			session.setAttribute("loop",n);
+			fl.setDestination(request.getParameter("dest"));
 			java.util.Date dates=c.StringToDate(did);
 			String date= new SimpleDateFormat("dd-mm-yyyy").format(dates);
 		if(date!=null) {
@@ -64,8 +66,7 @@ public class UserBooking extends HttpServlet {
 			re.include(request, response);
 			
 		}
-		}catch (Exception e) {
-			e.printStackTrace();
+		}catch (Exception  e) {
 			out.print("Fill the form correctly");
 			re=request.getRequestDispatcher("userwelcome.jsp");
 			re.include(request, response);

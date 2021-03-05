@@ -1,6 +1,7 @@
 package com.user.flyaway;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +37,8 @@ public class Details extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("text/css");
-		
-		RequestDispatcher rd=null;
+		PrintWriter out=response.getWriter();
+		try {
 		HttpSession session=request.getSession();
 		PersonalInfo l=(PersonalInfo)session.getAttribute("ticket");
 		List<PersonalInfo> pd=(List)session.getAttribute("details");
@@ -76,6 +77,9 @@ public class Details extends HttpServlet {
 		fll.setDate(Date);
 		fll.setPrize(prize);
 		session.setAttribute("booked", fll);
+		}
+		}catch(Exception e) {
+			response.sendRedirect("BookingDetails.html");
 		}
 	}
 

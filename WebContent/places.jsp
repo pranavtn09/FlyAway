@@ -12,7 +12,7 @@
 <title>FlyAway</title>
 <style type="text/css">
 	body {
-	background-image: url("welcome.jpg");background-repeat: no-repeat;background-size: cover;
+	background-image: url("Adm.jpg");background-repeat: no-repeat;background-size: cover;
 }
 </style>
 </head>

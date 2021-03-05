@@ -11,7 +11,7 @@
 <title>FlyAway</title>
 <style type="text/css">
 	body {
-	background-image: url("welcome.jpg");background-repeat: no-repeat ;background-size: cover;
+	background-image: url("use.jpg");background-repeat: no-repeat ;background-size: cover;
 }
 </style>
 </head>
@@ -33,6 +33,7 @@ Destination  <select name="dest" >
 <%}%>
 </select>
 <input type="date" name="date" placeholder="YYYY-MM-DD"/>
+<input type="number" name="ntick" placeholder="Number of tickets">
 <input type="submit" name="submit" value="Book"/>
 </form>
 </div>

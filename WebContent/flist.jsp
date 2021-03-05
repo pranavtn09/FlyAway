@@ -7,10 +7,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>FlyAway</title>
 <style type="text/css">
 	body {
-	background-image: url("welcome.jpg");background-repeat: no-repeat ;background-size: cover;
+	background-image: url("use.jpg");background-repeat: no-repeat ;background-size: cover;
 }
 </style>
 </head>
@@ -30,7 +30,7 @@ for(Flightinfo fl:flist){
 <tr>
 <td><%=fl.getFid() %></td>
 <td><%=fl.getPrize() %></td>
-<td><a href="pay.jsp?id=<%=fl.getFid() %>">Book Now</a></td>
+<td><a href="redirect.jsp?id=<%=fl.getFid() %>">Book Now</a></td>
 </tr>
 <%} %>
 </table>

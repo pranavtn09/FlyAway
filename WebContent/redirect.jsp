@@ -1,3 +1,5 @@
+<%@page import="com.flyaway.admin.Flightinfo"%>
+<%@page import="com.user.flyaway.Connect"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.user.flyaway.PersonalInfo"%>
@@ -10,12 +12,17 @@
 <title>FlyAway</title>
 </head>
 <body>
-<%int n=Integer.parseInt(request.getParameter("ntick")); 
+<%String fid=request.getParameter("id");
+Connect c=new Connect();
+Flightinfo fl=new Flightinfo();
+fl.setFid(fid);
+List<Flightinfo> flist=c.flightByid(fl);
+session.setAttribute("checkout",flist);
 List<PersonalInfo> pl=new ArrayList<PersonalInfo>();
 PersonalInfo p=new PersonalInfo();
+int n=(int)session.getAttribute("loop");
 p.setNticket(n);
 session.setAttribute("ticket",p);
-session.setAttribute("loop", p.getNticket());
 session.setAttribute("details", pl);
 response.sendRedirect("BookingDetails.html");%>
 </body>

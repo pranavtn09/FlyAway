@@ -7,10 +7,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>FlyAway</title>
 <style type="text/css">
 	body {
-	background-image: url("welcome.jpg");background-repeat: no-repeat;background-size: cover;
+	background-image: url("use.jpg");background-repeat: no-repeat;background-size: cover;
 }
 </style>
 </head>
@@ -33,6 +33,7 @@ Enter CVV<input type="number"/>
 <tr><td>Name</td><td><%=pl.getPname() %></td></tr>
 <tr><td>Age</td><td><%=pl.getAge() %></td></tr>
 <tr><td>Place</td><td><%=pl.getPlace() %></td></tr>
+<tr><td> </td><td> </td></tr>
 <%} %>
 <tr><th>Flight Details</th></tr>
 <tr><td>Flight Name</td><td><%=fl.getFid() %></td></tr>
